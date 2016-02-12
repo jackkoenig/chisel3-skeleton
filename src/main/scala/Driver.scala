@@ -7,10 +7,11 @@ import java.io._
 
 
 object Driver extends App {
+  val rootDir = new File(".").getCanonicalPath()
   val dut = "GCDTester"
-  val buildDir = "./build"
+  val buildDir = s"${rootDir}/build"
   val verilogFile = s"${buildDir}/${dut}.v"
-  val cppHarness = "./chisel/src/main/resources/top.cpp"
+  val cppHarness = s"${rootDir}/chisel3/src/main/resources/top.cpp"
 
   // Run Chisel 3
   val s = Chisel.Driver.emit(() => new GCDTester(4))
@@ -26,4 +27,10 @@ object Driver extends App {
   // Build executable
   println("Running Chisel.Driver.verilogToCpp")
   Chisel.Driver.verilogToCpp(dut, new File(buildDir), Seq(), new File(cppHarness)).!
+  Chisel.Driver.cppToExe(dut, new File(buildDir)).!
+  if (Chisel.Driver.executeExpectingSuccess(dut, new File(buildDir))) {
+    println("Test Executed Successfully!")
+  } else {
+    println("ERROR: Test Failed")
+  }
 }
