@@ -23,6 +23,7 @@ object Driver extends App {
   val writer = new PrintWriter(new File(verilogFile))
   // Compile to verilog
   firrtl.VerilogCompiler.run(circuit, writer)
+  writer.close()
 
   // Build executable
   println("Running Chisel.Driver.verilogToCpp")
