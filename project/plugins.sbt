@@ -1,4 +1,4 @@
-
+resolvers += "simplytyped" at "http://simplytyped.github.io/repo/releases"
 
 addSbtPlugin("org.scalastyle" %% "scalastyle-sbt-plugin" % "0.7.0")
 
