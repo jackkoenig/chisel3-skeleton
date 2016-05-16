@@ -22,8 +22,9 @@ object Driver extends App {
   val circuit = firrtl.Parser.parse(s.split("\n"))
 
   val writer = new PrintWriter(new File(verilogFile))
+  val compiler = new firrtl.VerilogCompiler
   // Compile to verilog
-  firrtl.VerilogCompiler.run(circuit, writer)
+  compiler.compile(circuit, Seq(), writer)
   writer.close()
 
   // Build executable
