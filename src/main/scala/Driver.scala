@@ -24,12 +24,12 @@ object Driver extends App {
   val writer = new PrintWriter(new File(verilogFile))
   val compiler = new firrtl.VerilogCompiler
   // Compile to verilog
-  compiler.compile(circuit, Seq(), writer)
+  compiler.compile(circuit, Annotations.AnnotationMap(Seq.empty), writer)
   writer.close()
 
   // Build executable
   println("Running Chisel.Driver.verilogToCpp")
-  Chisel.Driver.verilogToCpp(dut, new File(buildDir), Seq(), new File(cppHarness)).!
+  Chisel.Driver.verilogToCpp(dut, dut, new File(buildDir), Seq(), new File(cppHarness)).!
   Chisel.Driver.cppToExe(dut, new File(buildDir)).!
   if (Chisel.Driver.executeExpectingSuccess(dut, new File(buildDir))) {
     println("Test Executed Successfully!")
