@@ -19,7 +19,7 @@ object BuildSettings extends Build {
   )
 
   lazy val firrtl = Project("firrtl", file("firrtl"))
-  lazy val chisel = Project("chisel", file("chisel3"))
+  lazy val chisel = Project("chisel", file("chisel3")).dependsOn(firrtl)
   lazy val model = Project("chisel3-skeleton", file(".")).dependsOn(chisel, firrtl)
 
 }
