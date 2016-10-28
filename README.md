@@ -48,6 +48,8 @@ We recommend using homebrew as it supports updated versions of the prerequisites
  1. Update submodules    
  `cd chisel3-skeleton`    
  `git submodule update --init`  
+ 1. Chisel3 now depends on Firrtl so make sure to do a publish-local  
+ `sbt firrtl/publish-local`  
  1. Run sbt the first time to download dependencies  
  `sbt`
  1. Everything should be set up!  
