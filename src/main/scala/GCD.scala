@@ -2,15 +2,16 @@
 
 package test
 
-import Chisel._
+import chisel3._
+import chisel3.util._
 
 class GCD extends Module {
   val io = new Bundle {
-    val a  = UInt(INPUT, 32)
-    val b  = UInt(INPUT, 32)
-    val e  = Bool(INPUT)
-    val z  = UInt(OUTPUT, 32)
-    val v  = Bool(OUTPUT)
+    val a  = Input(UInt(32))
+    val b  = Input(UInt(32))
+    val e  = Input(Bool())
+    val z  = Output(UInt(32))
+    val v  = Output(Bool())
   }
   val x = Reg(UInt(width = 32))
   val y = Reg(UInt(width = 32))
@@ -23,13 +24,13 @@ class GCD extends Module {
 
 
 class DecoupledGCD extends Module {
-  val io = new Bundle {
+  val io = IO(new Bundle {
     val in = Decoupled(new Bundle {
       val a = UInt(width = 32)
       val b = UInt(width = 32)
     }).flip
     val out = Decoupled(UInt(width = 32))
-  }
+  })
 
   // Control State
   val busy = Reg(init = Bool(false))

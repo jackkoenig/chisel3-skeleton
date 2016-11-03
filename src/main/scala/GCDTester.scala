@@ -2,8 +2,9 @@
 
 package test
 
-import Chisel._
-import Chisel.testers.BasicTester
+import chisel3._
+import chisel3.testers.BasicTester
+import chisel3.util._
 
 import scala.util.Random
 
