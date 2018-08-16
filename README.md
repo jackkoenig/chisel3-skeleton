@@ -1,3 +1,5 @@
+# This repo is deprecated
+
 # chisel3-skeleton
 
 Both Chisel3 and FIRRTL are in **alpha** so there is no guarantee that this repo works, like, ever.
