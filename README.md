@@ -10,6 +10,7 @@ Please let me know if you notice any issues or errors with these instructions.
 This toolchain requires JDK7 (it does NOT work with JDK8), sbt, and Verilator (3.880 or newer).    
 
 ##### Linux Setup
+
 1. Install JDK7    
 `sudo apt-get install openjdk-7-jdk`    
 
